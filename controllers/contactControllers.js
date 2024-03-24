@@ -1,7 +1,8 @@
-const getContacts=(req,res)=>{
+const asyncHandler= require("express-async-handler");
+const getContacts=async(req,res)=>{
     res.status(200).json({message:"All contacts here"});
 };
-const createContact=(req,res)=>{
+const createContact=async(req,res)=>{
     console.log("The requested body is:",req.body);
     const{name,email,ph}=req.body;
     if (!name || !email || !ph) {
@@ -13,13 +14,17 @@ const createContact=(req,res)=>{
         res.status(200).json({ message: "Create contact" });
 }
 
-    const getContact=(req,res)=>{
+    const getContact=async(req,res)=>{
         res.status(200).json({message:`Get contact ${req.params.id}`})
     }
-    const updateContact=(req,res)=>{
+
+
+    const updateContact=async(req,res)=>{
         res.status(200).json({message:`Update contact ${req.params.id}`})
     }
-    const deleteContact=(req,res)=>{
+
+
+    const deleteContact=async(req,res)=>{
         res.status(200).json({message:`Delete contact ${req.params.id}`})
     }
 

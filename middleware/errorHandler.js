@@ -15,6 +15,7 @@ const errorHandler=(err,req,res,next)=>{
             case constants.FORBIDDEN:
                 res.json({title:"Forbidden request",message: err.message,stackTrace:err.stack});
         default:
+            console.log("No Error");
             break;
     }
     
