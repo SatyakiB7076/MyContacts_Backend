@@ -62,7 +62,7 @@ const createContact=asyncHandler(async(req,res)=>{
         }
         //Contact.remove() doesnt work
         await Contact.deleteOne({ _id: req.params.id }); // Deleting the contact by its ID
-        res.status(200).json({ message: "Contact deleted successfully" }); 
+        res.status(200).json({ message: `${req.params.id} deleted succesfully` }); 
     });
     
 module.exports={getContacts,createContact,getContact,updateContact,deleteContact};
