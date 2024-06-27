@@ -1,7 +1,7 @@
 const asyncHandler= require("express-async-handler");
 const Contact=require("../models/contactModel");
 
-
+//here we are putting all the logics for the CRUD operations and exporting the methods
 
 const getContacts=asyncHandler(async(req,res)=>{
     const contacts= await Contact.find();
@@ -20,7 +20,7 @@ const createContact=asyncHandler(async(req,res)=>{
     const contact= await Contact.create({
         name,email,phone,
     });
-    res.status(200).json(contact);
+    res.status(201).json(contact);
 });
 
 
