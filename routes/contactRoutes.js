@@ -6,7 +6,6 @@ const {getContacts,createContact,getContact,updateContact,deleteContact}=require
 //we can merge routes together if the api path is same
 router.route("/").get(getContacts).post(createContact);
 
-router.route("/:id").put(updateContact)
-router.route("/:id").delete(deleteContact)
-router.route("/:id").get(getContact)
+router.route("/:id").put(updateContact).delete(deleteContact).get(getContact)
+
 module.exports =router;
