@@ -1,7 +1,7 @@
 const asyncHandler= require("express-async-handler");
 const Contact=require("../models/contactModel");
 
-//here we are putting all the logics for the CRUD operations and exporting the methods
+//here we are putting all the logics for the CRUD operations and exporting the methods/functions
 
 const getContacts=asyncHandler(async(req,res)=>{
     const contacts= await Contact.find();
@@ -11,15 +11,19 @@ const getContacts=asyncHandler(async(req,res)=>{
 
 const createContact=asyncHandler(async(req,res)=>{
     console.log("The requested body is:",req.body);
+    //destructuring here
     const{name,email,phone}=req.body;
     if (!name || !email || !phone) {
+        //we can use both the below logics
         // res.status(400).json({ error: "All fields are mandatory" });
         res.status(400);
         throw new Error("All fields are mandatory");
     } 
+    //creating the contact 
     const contact= await Contact.create({
         name,email,phone,
     });
+    //sending the created contact as response 
     res.status(201).json(contact);
 });
 
@@ -43,12 +47,13 @@ const createContact=asyncHandler(async(req,res)=>{
             res.status(404);
             throw new Error("Contact not found");
          }
-         const updatdContact=await Contact.findByIdAndUpdate(
+         //new:true ensures updated contact get sent by response
+         const updateContact=await Contact.findByIdAndUpdate(
             req.params.id,
             req.body,
             {new:true}
          );
-        res.status(200).json(updatdContact);
+        res.status(200).json(updateContact);
     });
 
 
