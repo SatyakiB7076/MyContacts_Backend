@@ -12,6 +12,8 @@ app.use(express.json());
 
 //middleware
 app.use("/api/contacts",require("./routes/contactRoutes"));
+//for authentication
+app.use("/api/users",require("./routes/userRoutes"));
 
 //error handler middleware
 app.use(errorHandler);
